@@ -1,4 +1,5 @@
 require "base64"
+require_relative "score"
 
 def hamming(bytes1, bytes2)
   bytes1.
@@ -33,10 +34,6 @@ def most_likely_keysize(bytes, keyrange:)
   keyrange.map do |keysize|
     [keysize_score(bytes, keysize), keysize]
   end.min[1]
-end
-
-def score(bytes)
-  bytes.pack("C*").scan(/[etaoin shrdlu]/i).length
 end
 
 def crack(bytes, keysize, keyrange:)

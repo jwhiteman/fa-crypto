@@ -1,6 +1,4 @@
-def score(bytes)
-  bytes.pack("C*").scan(/[etaoin shrdlu]/i).length
-end
+require_relative "score"
 
 lines = IO.read("input/4.txt").chomp.lines
 
