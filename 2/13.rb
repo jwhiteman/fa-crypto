@@ -38,8 +38,8 @@ def oracle(email)
 end
 
 payload = [
-  *oracle("hackr@hax.com").scan(/.{16}/).take(2),
-  oracle("X" * 10 + "admin" + "\v" * 11).scan(/.{16}/)[1]
+  oracle("hackr@hax.com").slice(0, 32),
+  oracle("X" * 10 + "admin" + "\v" * 11).slice(16, 16)
 ].join
 
 puts parse_cookie(payload).inspect
