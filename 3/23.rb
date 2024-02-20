@@ -14,10 +14,10 @@ def untemper(y)
 end
 
 def _untemper(result, s, magic)
-  mask  = (2 ** s) - 1
-  iters = (32 / s.to_f).ceil
-  acc   = 0
-  solved_bits = result
+  mask        = (2 ** s) - 1
+  iters       = (32 / s.to_f).ceil
+  acc         = 0
+  solved_bits = result & mask
 
   iters.times.each do |n|
     left        = (magic  >> s * n) & mask & solved_bits
