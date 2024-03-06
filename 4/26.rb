@@ -30,9 +30,9 @@ NONCE = OpenSSL::Random.random_bytes(16)
 # P  = C ⊕ K - so we'll be attacking the decrypt
 # P' = C' ⊕ K
 
-def swap(chr); (chr.ord ^ 1).chr; end
+def flip(chr); (chr.ord ^ 1).chr; end
 
 c1     = comment(":admin<true")
-c1[32] = swap(c1[32])
-c1[38] = swap(c1[38])
+c1[32] = flip(c1[32])
+c1[38] = flip(c1[38])
 puts admin?(c1)

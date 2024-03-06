@@ -38,8 +38,9 @@ c3  = c.slice(32, 16)
 begin
   admin?(c1 + "\x00" * 16 + c1)
 rescue InvalidASCII => e
-  p1  = e.message.slice(0, 16)
-  p3  = e.message.slice(32, 16)
+  msg = e.message
+  p1  = msg.slice(0, 16)
+  p3  = msg.slice(32, 16)
   key = p1.bytes.zip(p3.bytes).map { |b1, b3| b1 ^ b3 }.pack("C*")
 
   puts "success" if key == KEY
