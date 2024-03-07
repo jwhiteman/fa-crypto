@@ -60,3 +60,4 @@ p2 = "\x00" * ciphertext.length
 c2 = edit(ciphertext, key, 0, p2)
 k  = c2.bytes.zip(p2.bytes).map { |(b1, b2)| b1 ^ b2 }
 p1 = ciphertext.bytes.zip(k).map { |(b1, b2)| b1 ^ b2 }.pack("C*")
+puts p1
