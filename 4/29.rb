@@ -25,7 +25,7 @@ def forge(mac, msg, newtxt)
     h2    = sha1(pld, state: s1, is_padded: true) # forged-hash: (state ^ see above)                   || newtxt || new-padding
     fmsg  = p1[kl..] + newtxt                     # forged-msg:                msg || original-padding || newtxt  (...new-padding will be added by the server)
 
-    if valid?(message: fmsg, mac: h2)             # ...does key || forged-msg == forged-hash
+    if valid?(message: fmsg, mac: h2)             # ...does sha1(key || forged-msg) == forged-hash ?
       return { status: "forged!", message: fmsg, mac: h2 }
     end
   end
