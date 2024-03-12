@@ -41,14 +41,17 @@ module HMAC
   end
 end
 
-require "minitest/autorun"
 
-Class.new(Minitest::Test) do
-  def test_parity
-    key = "yo"
-    msg = "ma!"
+if __FILE__ == $0
+  require "minitest/autorun"
 
-    assert_equal OpenSSL::HMAC.hexdigest("SHA1", key, msg),
-                 HMAC.hmac(key, msg)
+  Class.new(Minitest::Test) do
+    def test_parity
+      key = "yo"
+      msg = "ma!"
+
+      assert_equal OpenSSL::HMAC.hexdigest("SHA1", key, msg),
+                   HMAC.hmac(key, msg)
+    end
   end
 end
